@@ -1,21 +1,20 @@
-import "../../styles/expenses/expenses.css"
+import { useState } from "react";
 import "../../styles/expenses/expenseItem.css"
 import Card from "../ui/Card";
 import ExpenseDate from "./ExpenseDate";
 import ExpenseDetail from "./ExpenseDetails";
 import ExpenseOperation from "./ExpenseOperation";
 
-const ExpenseItem = ({ expenses }) => {
+const ExpenseItem = ({ expense }) => {
+    const [name, setName] = useState(expense.name);
+    const [price, setPrice] = useState(expense.price);
     return (
-        <Card className="expenses">
-            {expenses.map(item => (
-                <Card className="expense-item" key={item.name}>
-                    <ExpenseDate date={item.date} />
-                    <ExpenseDetail name={item.name} price={item.price} LocationOfExpenditure={item.LocationOfExpenditure} />
-                    <ExpenseOperation />
-                </Card>))
-            }
-        </Card>)
+        <Card className="expense-item" key={expense.name}>
+            <ExpenseDate date={expense.date} />
+            <ExpenseDetail name={name} price={price} LocationOfExpenditure={expense.LocationOfExpenditure} />
+            <ExpenseOperation setName={setName} setPrice={setPrice}/>
+        </Card>
+    )
 }
 
 export default ExpenseItem;

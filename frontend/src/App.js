@@ -1,5 +1,5 @@
 import './App.css';
-import ExpenseItem from './components/ExpenseItem';
+import ExpenseItem from './components/expenses/ExpenseItem';
 
 const expenses = [{ name: "Food", price: 100, LocationOfExpenditure: "movie", date: new Date() },
 { name: "Petrol", price: 100, LocationOfExpenditure: "movie", date: new Date() },
@@ -8,7 +8,8 @@ const expenses = [{ name: "Food", price: 100, LocationOfExpenditure: "movie", da
 function App() {
   return (
     <div className="App">
-      <main>
+      <h1>Expense Items</h1>
+      <main >
         <ExpenseItem expenses={expenses} />
       </main>
     </div>

@@ -1,10 +1,6 @@
 import "../styles/expenseItem.css"
 
-const expenses = [{ name: "Food", price: 100, LocationOfExpenditure: "movie" },
-{ name: "Petrol", price: 100, LocationOfExpenditure: "movie" },
-{ name: "Movies", price: 100, LocationOfExpenditure: "movie" }]
-
-const ExpenseItem = () => {
+const ExpenseItem = ({ expenses }) => {
     return (
         <>
             <h1>Expense Items</h1>

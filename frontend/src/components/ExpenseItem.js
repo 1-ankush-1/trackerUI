@@ -1,4 +1,6 @@
 import "../styles/expenseItem.css"
+import ExpenseDate from "./ExpenseDate";
+import ExpenseDetail from "./ExpenseDetails";
 
 const ExpenseItem = ({ expenses }) => {
     return (
@@ -6,11 +8,10 @@ const ExpenseItem = ({ expenses }) => {
             <h1>Expense Items</h1>
             <ul>
                 {expenses.map(item =>
-                    <li className="expense-item">
-                        <p>{item.name} </p>
-                        <p className="expense-item__LocationOfExpenditureription">{item.LocationOfExpenditure}</p>
-                        <p className="expense-item__price">Rs {item.price}</p>
-                    </li>)}
+                (<li className="expense-item" key={item.name}>
+                    <ExpenseDate date={item.date} />
+                    <ExpenseDetail name={item.name} price={item.price} LocationOfExpenditure={item.LocationOfExpenditure} />
+                </li>))}
             </ul>
         </>)
 }

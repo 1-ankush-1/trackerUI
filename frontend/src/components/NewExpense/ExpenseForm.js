@@ -3,7 +3,7 @@ import { useState } from "react";
 const ExpenseForm = ({ SetAllExpense }) => {
     const [expense, setExpense] = useState({
         name: "",
-        price: "",
+        price: null,
         date: "",
     });
 
@@ -14,7 +14,12 @@ const ExpenseForm = ({ SetAllExpense }) => {
 
     const handleAddExpense = (e) => {
         e.preventDefault();
-        console.log(expense)
+        SetAllExpense((prev) => {
+            const newexpense = expense;
+            newexpense.id = Math.random() + newexpense.name;
+            newexpense.date = new Date(newexpense.date)
+            return [...prev, newexpense];
+        })
         setExpense({
             name: "",
             price: "",

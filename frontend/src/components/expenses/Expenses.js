@@ -8,7 +8,7 @@ const Expenses = ({ expenses }) => {
     const [filteredExpense, SetFilteredExpense] = useState([]);
 
     useEffect(() => {
-        SetFilteredExpense(expenses)
+        SetFilteredExpense(expenses);
     }, [expenses])
 
     const HandleFilterExpense = (e) => {
@@ -16,12 +16,11 @@ const Expenses = ({ expenses }) => {
     }
 
     return (
-        <>
+        <Card className="expenses">
             <ExpenseFilter selected={new Date().getFullYear()} onChangeFilter={HandleFilterExpense} />
-            <Card className="expenses">
-                {filteredExpense?.map(item => <ExpenseItem expense={item} />)}
-            </Card>
-        </>)
+            {filteredExpense?.map(item => <ExpenseItem expense={item} key={item.id} />)}
+        </Card>
+    )
 }
 
 export default Expenses;

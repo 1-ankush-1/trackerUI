@@ -3,9 +3,9 @@ import './App.css';
 import AddExpense from './components/NewExpense/AddExpense';
 import Expenses from './components/expenses/Expenses';
 
-const expenses = [{ name: "Food", price: 400, LocationOfExpenditure: "movie", date: new Date() },
-{ name: "Petrol", price: 200, LocationOfExpenditure: "movie", date: new Date() },
-{ name: "Movies", price: 600, LocationOfExpenditure: "movie", date: new Date() }]
+const expenses = [{ id: "001", name: "Food", price: 400, LocationOfExpenditure: "movie", date: new Date() },
+{ id: "2100", name: "Petrol", price: 200, LocationOfExpenditure: "movie", date: new Date() },
+{ id: "022", name: "Movies", price: 600, LocationOfExpenditure: "movie", date: new Date() }]
 
 function App() {
   const [allExpense, SetAllExpense] = useState(expenses);

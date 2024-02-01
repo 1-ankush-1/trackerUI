@@ -3,7 +3,7 @@ import { useState } from "react";
 const ExpenseForm = ({ SetAllExpense }) => {
     const [expense, setExpense] = useState({
         name: "",
-        price: null,
+        price: "",
         date: "",
     });
 
@@ -18,7 +18,7 @@ const ExpenseForm = ({ SetAllExpense }) => {
             const newexpense = expense;
             newexpense.id = Math.random() + newexpense.name;
             newexpense.date = new Date(newexpense.date)
-            return [...prev, newexpense];
+            return [newexpense, ...prev];
         })
         setExpense({
             name: "",

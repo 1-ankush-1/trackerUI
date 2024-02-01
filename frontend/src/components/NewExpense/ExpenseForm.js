@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const ExpenseForm = ({ SetAllExpense }) => {
+const ExpenseForm = ({ SetAllExpense, OnChangeShowForm }) => {
     const [expense, setExpense] = useState({
         name: "",
         price: "",
@@ -25,6 +25,7 @@ const ExpenseForm = ({ SetAllExpense }) => {
             price: "",
             date: "",
         })
+        OnChangeShowForm();
     }
 
     return (
@@ -35,6 +36,7 @@ const ExpenseForm = ({ SetAllExpense }) => {
             <input id="amount" name="price" type="number" min={0.00} value={expense.price} onChange={handleInputChange}></input>
             <label htmlFor="date">Date</label>
             <input id="date" name="date" type="date" value={expense.date.toLocaleString()} onChange={handleInputChange}></input>
+            <button onClick={OnChangeShowForm} type="button">Cancel</button>
             <button type="submit"> AddExpense</button>
         </form>
     )

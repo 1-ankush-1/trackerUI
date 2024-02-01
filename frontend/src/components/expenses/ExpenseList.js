@@ -1,12 +1,13 @@
 import ExpenseItem from "./ExpenseItem";
+import "../../styles//expenses/expenseList.css"
 
 const ExpenseList = ({ expenses }) => {
     if (expenses.length === 0) {
-        return <p>Only single Expense here. Please add more...</p>
+        return <p className="expenses-list__fallback">Only single Expense here. Please add more...</p>
     }
 
     return (
-        <ul>
+        <ul className="expenses-list">
             {
                 expenses.map(item => <ExpenseItem expense={item} key={item.id} />)
             }

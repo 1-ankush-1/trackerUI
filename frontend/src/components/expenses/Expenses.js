@@ -19,7 +19,7 @@ const Expenses = ({ expenses }) => {
     return (
         <Card className="expenses">
             <ExpenseFilter selected={filteredYear} onChangeFilter={HandleFilterExpense} />
-            {filteredExpense.length === 0 ? <p>no expense found</p> :
+            {filteredExpense.length === 0 ? <p>Only single Expense here. Please add more...</p> :
                 filteredExpense.map(item => <ExpenseItem expense={item} key={item.id} />)
             }
         </Card>

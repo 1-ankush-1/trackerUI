@@ -1,0 +1,51 @@
+.dialog {
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  width: 600px;
+  background: #fff;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  border: 1px solid grey;
+  border-radius: 20px;
+}
+
+.dialog-head {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: rebeccapurple;
+  color: white;
+}
+
+.dialog-body {
+  padding: 10px;
+}
+.dialog-content {
+  float: left;
+}
+.dialog-content p {
+  font-size: 1.4rem;
+}
+
+.dialog-action {
+  position: absolute;
+  float: right;
+}
+
+.dialog-action button {
+  background-color: rebeccapurple;
+  color: white;
+  position: absolute;
+  top: 70px;
+  left: 450px;
+  font-size: 1.4rem;
+  width: 100px;
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}

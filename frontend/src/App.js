@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import './App.css';
+import AddExpense from './components/NewExpense/AddExpense';
 import Expenses from './components/expenses/Expenses';
 
 const expenses = [{ name: "Food", price: 400, LocationOfExpenditure: "movie", date: new Date() },
@@ -6,11 +8,14 @@ const expenses = [{ name: "Food", price: 400, LocationOfExpenditure: "movie", da
 { name: "Movies", price: 600, LocationOfExpenditure: "movie", date: new Date() }]
 
 function App() {
+  const [allExpense, SetAllExpense] = useState(expenses);
+
   return (
     <div className="App">
       <h1>Expense Items</h1>
       <main >
-        <Expenses expenses={expenses} />
+        <AddExpense SetAllExpense={SetAllExpense} />
+        <Expenses expenses={allExpense} />
       </main>
     </div>
   );

@@ -3,6 +3,7 @@ const ShowUser = ({ user }) => {
         <li className="user">
             <div className="content">{user.name}</div>
             <div className="content">{user.age}</div>
+            <div className="content">{user.collegeName}</div>
         </li>)
 }
 

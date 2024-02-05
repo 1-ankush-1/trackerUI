@@ -1,0 +1,19 @@
+.order {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.order:hover {
+  border: 1px solid black;
+}
+.order-operation-btn {
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
+.order-field {
+  font-size: 1rem;
+}

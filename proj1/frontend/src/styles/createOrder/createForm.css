@@ -1,0 +1,62 @@
+.order-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.order-lbl {
+  font-weight: 400;
+  margin: 2px;
+}
+.order-inp {
+  border: 1px solid #ccc;
+  caret-color: black;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 4px;
+}
+.order-inp:hover {
+  border: 1px solid black;
+}
+
+.order-btn {
+  border: none;
+  font-size: 1rem;
+  margin: 5px;
+  padding: 5px 10px;
+  border-radius: 2px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+
+.order-btn:hover {
+  border: 1px solid black;
+}
+
+.order-form-select {
+  appearance: none;
+  padding: 5px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  width: 150px;
+}
+
+.order-form-select option {
+  padding: 8px;
+  font-size: 14px;
+  background-color: #fff;
+  color: #333;
+}
+
+.order-form-select option:hover {
+  background-color: #f0f0f0;
+}
+
+.order-form-select option:checked {
+  background-color: #e0e0e0;
+  font-weight: bold;
+}

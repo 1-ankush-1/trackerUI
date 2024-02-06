@@ -9,12 +9,12 @@ function App() {
       <header className="App-header">
         <h1>Restaurant Manager</h1>
       </header>
-      <OrderProviderContext>
-        <main>
+      <main>
+        <OrderProviderContext>
           <CreateOrder />
           <ShowOrder />
-        </main>
-      </OrderProviderContext>
+        </OrderProviderContext>
+      </main>
     </div>
   );
 }

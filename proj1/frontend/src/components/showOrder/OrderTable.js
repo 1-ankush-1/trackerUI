@@ -4,7 +4,7 @@ import "../../styles/showOrder/orderTable.css"
 const OrdersTable = (props) => {
     return (
         <div className="order-table">
-            <h2 className="order-table-head">{props.table?.toUpperCase()}</h2>
+            <h2 className="order-table-head">{props.table && props.table.toUpperCase() + "🪑"}</h2>
             <div className="order-table-content">
                 {props.orders.map((odr) => (
                     <Order

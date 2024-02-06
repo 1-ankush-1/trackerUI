@@ -34,6 +34,13 @@ const CreateForm = () => {
         }
 
         ordCtx.onOrderChange(order);
+        
+        setOrder({
+            orderId: "",
+            dish: "",
+            price: "",
+            table: "table1"
+        })
     }
 
     return (

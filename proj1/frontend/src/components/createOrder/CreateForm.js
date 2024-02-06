@@ -9,7 +9,7 @@ const CreateForm = () => {
         orderId: "",
         dish: "",
         price: "",
-        table: ""
+        table: "table1"
     })
 
     const onChangeOrderHandler = (e) => {
@@ -18,7 +18,7 @@ const CreateForm = () => {
 
     const handleOrderForm = (e) => {
         e.preventDefault();
-
+        console.log(order);
         if (order.orderId === "" || order.dish === "" || order.price === "" || order.table === "") {
             alert("one or more missing field");
             return;
@@ -44,6 +44,7 @@ const CreateForm = () => {
                 id="order_id"
                 name="orderId"
                 type="number"
+                value={order.orderId}
                 onChange={onChangeOrderHandler}
             />
             <label htmlFor="order_price" className="order-lbl">Choose Price</label>
@@ -52,6 +53,7 @@ const CreateForm = () => {
                 id="order_price"
                 type="number"
                 name="price"
+                value={order.price}
                 onChange={onChangeOrderHandler}
             />
             <label htmlFor="order_dish" className="order-lbl">Choose Dish</label>
@@ -60,10 +62,11 @@ const CreateForm = () => {
                 id="order_dish"
                 name="dish"
                 type="text"
+                value={order.dish}
                 onChange={onChangeOrderHandler}
             />
             <label htmlFor="order_table" className="order-lbl">Choose Table</label>
-            <select id="order_table" defaultValue={"table1"} name="table" onChange={onChangeOrderHandler} className="order-form-select">
+            <select id="order_table" name="table" value={order.table} onChange={onChangeOrderHandler} className="order-form-select">
                 <option value={"table1"}>Table 1</option>
                 <option value={"table2"}>Table 2</option>
                 <option value={"table3"}>Table 3</option>

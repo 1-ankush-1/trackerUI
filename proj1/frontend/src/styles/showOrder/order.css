@@ -7,11 +7,10 @@
   border-radius: 4px;
 }
 .order:hover {
-  border: 1px solid black;
+  background-color: #60ade1;
+  color: white;
 }
-.order-operation-btn {
-  border: none;
-  background-color: white;
+.order-operation {
   cursor: pointer;
 }
 .order-field {

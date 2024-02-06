@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Restaurant App</h1>
+        <h1>Restaurant Manager</h1>
       </header>
       <OrderProviderContext>
         <main>

@@ -1,4 +1,5 @@
 import "../../Styles/Meals/AvailableMeals.css"
+import MealForm from "./MealForm"
 import MealItem from "./MealItem"
 const MealList = [
     { id: "1", name: "some dish", description: "great", price: "120" },
@@ -10,12 +11,14 @@ const AvailableMeals = () => {
             <ul>
                 {MealList.map((meal) => {
                     return (
-                        <MealItem
-                            key={meal.id}
-                            name={meal.name}
-                            price={meal.price}
-                            description={meal.description}
-                        />
+                        <li className="meal" key={meal.id}>
+                            <MealItem
+                                name={meal.name}
+                                price={meal.price}
+                                description={meal.description}
+                            />
+                            <MealForm />
+                        </li>
                     )
                 })}
             </ul>

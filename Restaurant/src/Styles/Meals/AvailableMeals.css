@@ -2,7 +2,7 @@
   max-width: 60rem;
   width: 90%;
   margin: 2rem auto;
-  padding: 1rem;
+  padding: 2rem;
   background-color: aliceblue;
   border-radius: 10px;
 }
@@ -13,10 +13,16 @@
   padding: 0;
 }
 
+.meal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+}
+
 .meal-item {
   margin: 1rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #ccc;
 }
 
 .meal-item .item-name {
@@ -30,4 +36,36 @@
   font-weight: bold;
   color: #ad5502;
   font-size: 1.25rem;
+}
+
+.meal-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-component {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-component input {
+  width: 40px;
+  border: 1px solid #ccc;
+}
+
+.input-component label {
+  font-size: 1.1rem;
+  font-weight: bolder;
+}
+
+.meal-form button {
+  padding: 5px 25px;
+  border-radius: 30px;
+  border: none;
+  background-color: #7f300c;
+  color: white;
+  cursor: pointer;
 }

@@ -11,4 +11,13 @@ html {
 body {
   margin: 0;
   padding: 0;
+  background-color: grey;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  padding: 0;
 }

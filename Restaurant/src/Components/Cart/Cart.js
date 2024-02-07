@@ -4,7 +4,7 @@ const Cart = () => {
     return (
         <div className="cart">
             <div>
-                <image src="" alt="cart-icon"></image>
+                <img src="" alt="cart-icon"></img>
             </div>
             <div>
                 <p>your cart</p>

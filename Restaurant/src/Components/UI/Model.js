@@ -9,8 +9,8 @@ const ModalItems = (props) => {
     </div>)
 }
 
-const Backdrop = () => {
-    return <div className="backdrop"></div>
+const Backdrop = (props) => {
+    return <div className="backdrop" onClick={props.onCloseModal}></div>
 }
 
 const ModalOverlay = (props) => {
@@ -22,8 +22,8 @@ const ModalOverlay = (props) => {
                 <h2>{`₹12`}</h2>
             </div>
             <div className="modal-btn-components">
-                <button className="close-btn">close</button>
-                <button className="order-btn">order</button>
+                <button className="close-btn" onClick={props.onCloseModal}>close</button>
+                <button className="order-btn" >order</button>
             </div>
         </div>
     )
@@ -31,8 +31,8 @@ const ModalOverlay = (props) => {
 
 const Modal = (props) => {
     return (<>
-        {ReactDom.createPortal(<Backdrop />, document.getElementById("cart-backdrop"))}
-        {ReactDom.createPortal(<ModalOverlay />, document.getElementById("cart-modal"))}
+        {ReactDom.createPortal(<Backdrop onCloseModal={props.onCloseModal} />, document.getElementById("cart-backdrop"))}
+        {ReactDom.createPortal(<ModalOverlay onCloseModal={props.onCloseModal} />, document.getElementById("cart-modal"))}
     </>)
 }
 

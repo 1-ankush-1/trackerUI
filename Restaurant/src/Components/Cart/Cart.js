@@ -1,11 +1,16 @@
+import { useState } from "react";
 import "../../Styles/Cart/Cart.css"
 import Modal from "../UI/Model";
 
 const Cart = () => {
+    const [openModal, setOpenModal] = useState(false);
+
+    const handleOpenModal = () => setOpenModal(true)
+    const handleCloseModal = () => setOpenModal(false)
 
     return (
         <>
-            <div className="cart">
+            <div className="cart" onClick={handleOpenModal}>
                 <div>
                     <img src="" alt="cart-icon"></img>
                 </div>
@@ -14,7 +19,7 @@ const Cart = () => {
                 </div>
                 <div>{0}</div>
             </div>
-            <Modal />
+            {openModal && <Modal onCloseModal={handleCloseModal} />}
         </>
     )
 }

@@ -1,5 +1,5 @@
-import Cart from "../Cart/Cart"
 import "../../Styles/Layout/Header.css"
+import CartButton from "../Cart/CartIcon";
 
 const Header = () => {
     return (
@@ -8,7 +8,7 @@ const Header = () => {
                 <div className="nav-head">
                     <h1>MealsMatters</h1>
                 </div>
-                <Cart />
+                <CartButton />
             </header>
             <div className="main-img">
                 <img src="" alt="mainImage"></img>

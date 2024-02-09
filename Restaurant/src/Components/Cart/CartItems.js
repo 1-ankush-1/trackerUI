@@ -7,7 +7,7 @@ const CartItems = (props) => {
     }
 
     const cartItemAddHandler = item => {
-        props.onAdd(item);
+        props.onAdd({ ...item, amount: 1 });
     }
 
     return (

@@ -1,26 +1,30 @@
-import { useState } from "react";
 import "../../Styles/Cart/Cart.css"
+import { useContext } from "react";
+import { CartContext } from "../../store/cartContext";
 import Modal from "../UI/Model";
+import CartItems from "./CartItems";
 
-const Cart = () => {
-    const [openModal, setOpenModal] = useState(false);
-
-    const handleOpenModal = () => setOpenModal(true)
-    const handleCloseModal = () => setOpenModal(false)
+const Cart = (props) => {
+    const cartCtx = useContext(CartContext);
+    const totalAmount = `₹${cartCtx.totalAmount.toFixed(2)}`;
+    const hasItems = cartCtx.items.length > 0;
 
     return (
-        <>
-            <div className="cart" onClick={handleOpenModal}>
-                <div>
-                    <img src="" alt="cart-icon"></img>
-                </div>
-                <div>
-                    <p>your cart</p>
-                </div>
-                <div>{0}</div>
+        <Modal onClose={props.onClose} >
+            <CartItems
+                items={cartCtx.items}
+                onAdd={cartCtx.addItem}
+                onRemove={cartCtx.removeItem}
+            />
+            <div className="total-amt">
+                <h2>Total Amount</h2>
+                <h2>{totalAmount}</h2>
             </div>
-            {openModal && <Modal onCloseModal={handleCloseModal} />}
-        </>
+            <div className="modal-btn-components">
+                <button className="close-btn" onClick={props.onClose}>close</button>
+                {hasItems && <button className="order-btn" >order</button>}
+            </div>
+        </Modal>
     )
 }
 

@@ -2,38 +2,25 @@ import React from "react"
 import ReactDom from "react-dom";
 import "../../Styles/UI/Modal.css"
 
-
-const ModalItems = (props) => {
-    return (<div>
-        <div>{props.name}</div>
-    </div>)
-}
-
 const Backdrop = (props) => {
-    return <div className="backdrop" onClick={props.onCloseModal}></div>
+    return <div className="backdrop" onClick={props.onClose}></div>
 }
 
 const ModalOverlay = (props) => {
     return (
         <div className="modal-overlay">
-            <ModalItems name={"some"} />
-            <div className="total-amt">
-                <h2>Total Amount</h2>
-                <h2>{`₹12`}</h2>
-            </div>
-            <div className="modal-btn-components">
-                <button className="close-btn" onClick={props.onCloseModal}>close</button>
-                <button className="order-btn" >order</button>
-            </div>
+            {props.children}
         </div>
     )
 }
 
 const Modal = (props) => {
-    return (<>
-        {ReactDom.createPortal(<Backdrop onCloseModal={props.onCloseModal} />, document.getElementById("cart-backdrop"))}
-        {ReactDom.createPortal(<ModalOverlay onCloseModal={props.onCloseModal} />, document.getElementById("cart-modal"))}
-    </>)
+    return (
+        <>
+            {ReactDom.createPortal(<Backdrop onClose={props.onClose} />, document.getElementById("cart-backdrop"))}
+            {ReactDom.createPortal(<ModalOverlay >{props.children}</ModalOverlay>, document.getElementById("cart-modal"))}
+        </>
+    )
 }
 
 export default Modal

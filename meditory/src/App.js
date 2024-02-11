@@ -1,15 +1,18 @@
 import './App.css';
 import Header from './components/layout/header/Header';
 import AddMedicine from './components/addMedicine/AddMedicine';
-import Medicine from './components/medicine/Medicine';
+import MedicineContexProvider from './store/medicineContext';
+import Medicines from './components/medicine/Medicines';
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <main>
-        <AddMedicine />
-        <Medicine />
+      <main className='main'>
+        <MedicineContexProvider>
+          <AddMedicine />
+          <Medicines />
+        </MedicineContexProvider>
       </main>
     </div>
   );

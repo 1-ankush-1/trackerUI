@@ -1,4 +1,5 @@
-import { useContext, useReducer, useState } from "react";
+import "../../style/components/addMedicine.css"
+import { useContext, useState } from "react";
 import Input from "../ui/Input";
 import { MedicineContex } from "../../store/medicineContext";
 import Button from "../ui/button";
@@ -21,10 +22,11 @@ const AddMedicineForm = () => {
             return;
         }
         mediCtx.onAddMedicine(medicine);
+        setMedicine({ id: "", name: "", description: "", price: "" });
     }
 
     return (
-        <form onSubmit={handleFormSubmit} id="Addmedicineform">
+        <form onSubmit={handleFormSubmit} id="Addmedicineform" className="addmedicine-form">
             <Input
                 label="Unique Id"
                 value={medicine.id}

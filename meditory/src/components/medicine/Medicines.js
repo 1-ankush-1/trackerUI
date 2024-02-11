@@ -10,6 +10,7 @@ const Medicines = () => {
                 return (
                     <Medicine
                         key={medi.id}
+                        id={medi.id}
                         name={medi.name}
                         description={medi.description}
                         price={medi.price}

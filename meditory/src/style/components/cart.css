@@ -1,0 +1,39 @@
+.cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.cart-items {
+  list-style: none;
+  overflow-y: scroll;
+  padding: 0px 20px;
+}
+
+.cart-item {
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
+}
+
+.item-head-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item-button-components {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.item-button-components button {
+  padding: 2px 15px;
+  font-size: 1.8rem;
+  border-radius: 10px;
+  background-color: rosybrown;
+  border: none;
+  cursor: pointer;
+}

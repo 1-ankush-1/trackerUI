@@ -1,12 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/header/Header';
+import AddMedicine from './components/addMedicine/AddMedicine';
+import Medicine from './components/medicine/Medicine';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        
-      </header>
+      <Header />
+      <main>
+        <AddMedicine />
+        <Medicine />
+      </main>
     </div>
   );
 }

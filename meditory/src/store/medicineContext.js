@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export const MedicineContex = React.createContext({
     medicines: [],
@@ -6,11 +6,27 @@ export const MedicineContex = React.createContext({
 });
 
 const MedicineContexProvider = (props) => {
-    const [medicines, setMedicines] = useState([{ id: "12", name: "name of medi", description: "description", price: "120" }])
+    const [medicines, setMedicines] = useState([])
+
+    useEffect(() => {
+        const MedicineStock = JSON.parse(localStorage.getItem("medicines"));
+        if (MedicineStock) {
+            setMedicines([...MedicineStock])
+        }
+    }, [])
 
     const handleAddMedicine = (item) => {
+
         setMedicines((prev) => {
-            return [item, ...prev]
+            console.log(item);
+            let idxExist = prev.findIndex(medicine => medicine.id === item.id);
+            if (idxExist !== -1) {
+                alert("enter unique medicine id");
+                return [...prev];
+            }
+            const updatedMedicineList = [item, ...prev];
+            localStorage.setItem("medicines", JSON.stringify(updatedMedicineList))
+            return [...updatedMedicineList];
         })
     }
 

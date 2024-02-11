@@ -6,6 +6,7 @@ const CartReducer = (state, action) => {
     
     switch (action.type) {
         case "ADD_ITEM":
+            console.log("yes");
             //update total
             updatedTotalAmount = Number(state.totalAmount) + Number(action.item.price) * Number(action.item.amount);
             //find the item idx

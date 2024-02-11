@@ -1,0 +1,16 @@
+.input-component {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.input-component label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.input-component input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

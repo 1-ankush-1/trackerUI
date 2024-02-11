@@ -1,7 +1,7 @@
 import "../../style/components/cart.css"
 import { useContext, useState } from "react";
-import CartItems from "./CartItems";
 import { CartContext } from "../../store/cartContext";
+import Cart from "./Cart";
 
 
 const CartButton = () => {
@@ -17,15 +17,15 @@ const CartButton = () => {
     return (
         <>
             <div className="cart" onClick={handleOpenModal}>
-                <div>
-                    <img src="" alt="cart-icon"></img>
+                <div className="cart-img-component">
+                    <img src="../shopping-cart.png" alt="cart-icon" className="cart-icon"></img>
                 </div>
-                <div>
-                    <p>your cart</p>
+                <div className="cart-count-component">
+                    {/* <span>your cart</span> */}
+                    <span>{numberOfCartItems}</span>
                 </div>
-                <div>{numberOfCartItems}</div>
             </div>
-            {openModal && <CartItems onClose={handleCloseModal} />}
+            {openModal && <Cart onClose={handleCloseModal} />}
         </>
     )
 }

@@ -1,11 +1,9 @@
 const MedicineBody = (props) => {
     return (
-        <div>
+        <div className="medicine-body">
             <h2>{props.name}</h2>
-            <div>
-                <span>{props.price}</span>
-                <span>{props.description}</span>
-            </div>
+            <p>{`₹${props.price}`}</p>
+            <small>{props.description}</small>
         </div>
     )
 }

@@ -5,7 +5,7 @@ const CartItem = (props) => {
             <div className="cart-item-head">
                 <h3>{props.item.name}</h3>
                 <div className="item-head-content">
-                    <span>{props.item.price}</span>
+                    <span>{`₹${props.item.price}`}</span>
                     <span> x {props.item.amount}</span>
                 </div>
             </div>

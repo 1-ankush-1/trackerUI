@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import Input from "../ui/Input";
 import Button from "../ui/button";
 
@@ -12,10 +12,11 @@ const MedicineForm = (props) => {
     const handleAddAmount = (e) => {
         e.preventDefault();
         props.onAddAmount(amount)
+        setAmount(0);
     }
 
     return (
-        <form id="MedicineForm" onSubmit={handleAddAmount}>
+        <form id="MedicineForm" onSubmit={handleAddAmount} className="medicine-form">
             <Input
                 label="Amount"
                 id="amount"

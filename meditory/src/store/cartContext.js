@@ -15,11 +15,11 @@ const CartContextProvider = (props) => {
     });
 
     const addItemInCart = (item) => {
-        dispatchCartAction({ action: "ADD_ITEM", item })
+        dispatchCartAction({ type: "ADD_ITEM", item })
     }
 
     const removeItemFromCart = (id) => {
-        dispatchCartAction({ action: "REMOVE_ITEM", id })
+        dispatchCartAction({ type: "REMOVE_ITEM", id })
     }
 
     const value = {

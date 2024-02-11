@@ -1,14 +1,13 @@
 import "../../style/components/cart.css"
 import { useContext } from "react";
 import { CartContext } from "../../store/cartContext";
-import Modal from "../UI/Model";
+import Modal from "../ui/modal";
 import CartItems from "./CartItems";
 
 const Cart = (props) => {
     const cartCtx = useContext(CartContext);
     const totalAmount = `₹${cartCtx.totalAmount.toFixed(2)}`;
     const hasItems = cartCtx.items.length > 0;
-
     return (
         <Modal onClose={props.onClose} >
             <CartItems

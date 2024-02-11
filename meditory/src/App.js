@@ -1,5 +1,5 @@
 import './App.css';
-import Header from './components/header/Header';
+import Header from './components/layout/header/Header';
 import AddMedicine from './components/addMedicine/AddMedicine';
 import Medicine from './components/medicine/Medicine';
 

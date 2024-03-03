@@ -1,22 +1,22 @@
 import './App.css';
 import Header from './components/layout/header/Header';
 import AddMedicine from './components/addMedicine/AddMedicine';
-import MedicineContexProvider from './store/medicineContext';
 import Medicines from './components/medicine/Medicines';
 import CartContextProvider from './store/cartContext';
+import MedicineContextProvider from './store/medicineContext';
 
 function App() {
   return (
     <div className="App">
-      <CartContextProvider>
-        <Header />
-        <main className='main'>
-          <MedicineContexProvider>
+      <MedicineContextProvider>
+        <CartContextProvider>
+          <Header />
+          <main className='main'>
             <AddMedicine />
             <Medicines />
-          </MedicineContexProvider>
-        </main>
-      </CartContextProvider>
+          </main>
+        </CartContextProvider>
+      </MedicineContextProvider>
     </div>
   );
 }

@@ -23,8 +23,8 @@ const MedicineForm = (props) => {
                 value={amount}
                 onInputChange={handleAmountChange}
                 type="number"
-                min={0}
-                max={5}
+                min={1}
+                max={props.maxBuy}
             />
             <Button type="submit" value="Add" />
         </form>)

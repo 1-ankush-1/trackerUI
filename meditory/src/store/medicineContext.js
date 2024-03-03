@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-export const MedicineContex = React.createContext({
+export const MedicineContext = React.createContext({
     medicines: [],
-    onAddMedicine: () => { }
+    onAddMedicine: () => { },
+    onMedicineQuantityChange: () => { }
 });
 
-const MedicineContexProvider = (props) => {
+const MedicineContextProvider = (props) => {
     const [medicines, setMedicines] = useState([])
 
     useEffect(() => {
@@ -30,11 +31,36 @@ const MedicineContexProvider = (props) => {
         })
     }
 
+    const updateQuantity = (item) => {
+        if (item.action === 'decrease') {
+            setMedicines((prev) => {
+                return [...prev.map((indv_item) => {
+                    if (indv_item.id !== item.id) {
+                        return indv_item
+                    }
+                    return {...indv_item, quantity: item.quantity};
+                })]
+            })
+        }
+        else if (item.action === "increase") {
+            console.log("called");
+            setMedicines((prev) => {
+                return [...prev.map((indv_item) => {
+                    if (indv_item.id !== item.id) {
+                        return indv_item
+                    }
+                    console.log(indv_item.quantity)
+                    return {...indv_item, quantity: Number(indv_item.quantity) + 1};
+                })]
+            })
+        }
+    }
+
     return (
-        <MedicineContex.Provider value={{ medicines: medicines, onAddMedicine: handleAddMedicine }}>
+        <MedicineContext.Provider value={{ medicines: medicines, onAddMedicine: handleAddMedicine, onMedicineQuantityChange: updateQuantity }}>
             {props.children}
-        </MedicineContex.Provider>
+        </MedicineContext.Provider>
     )
 }
 
-export default MedicineContexProvider;
+export default MedicineContextProvider;

@@ -1,12 +1,12 @@
 import "../../style/components/addMedicine.css"
 import { useContext, useState } from "react";
 import Input from "../ui/Input";
-import { MedicineContex } from "../../store/medicineContext";
+import { MedicineContext } from "../../store/medicineContext";
 import Button from "../ui/button";
 
 const AddMedicineForm = () => {
-    const mediCtx = useContext(MedicineContex)
-    const [medicine, setMedicine] = useState({ id: "", name: "", description: "", price: "" });
+    const mediCtx = useContext(MedicineContext)
+    const [medicine, setMedicine] = useState({ id: "", name: "", description: "", price: "", quantity: "" });
 
     const handleInputChanges = (event) => {
         const { name, value } = event.target;
@@ -56,6 +56,15 @@ const AddMedicineForm = () => {
                 value={medicine.price}
                 id="price"
                 name="price"
+                type="number"
+                min="0"
+                onInputChange={handleInputChanges}
+            />
+            <Input
+                label="Quantity"
+                value={medicine.quantity}
+                id="quantity"
+                name="quantity"
                 type="number"
                 min="0"
                 onInputChange={handleInputChanges}

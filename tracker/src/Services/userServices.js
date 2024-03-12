@@ -1,22 +1,27 @@
-import { updateProfile } from "firebase/auth";
+import { onAuthStateChanged, updateProfile } from "firebase/auth";
 import { auth } from "../firebase.setup";
 
 async function getUserDetails() {
     try {
-        const user = auth.currentUser;
         const userDetails = {
             id: "",
             name: "",
             email: "",
             image: "",
         }
-        if (user !== null) {
-            const uid = user.uid;
-            userDetails.id = uid;
-            userDetails.name = user.displayName;
-            userDetails.email = user.email;
-            userDetails.image = user.photoURL;
-        }
+        //wait for the getting data(onAuthStateChanged - used to get state of current user even page is refreshed)
+        await new Promise((resolve, reject) => {
+            onAuthStateChanged(auth, (user) => {
+                if (user !== null) {
+                    const uid = user.uid;
+                    userDetails.id = uid;
+                    userDetails.name = user.displayName;
+                    userDetails.email = user.email;
+                    userDetails.image = user.photoURL;
+                }
+                resolve();
+            });
+        });
         return {
             data: {
                 user: userDetails
@@ -33,6 +38,7 @@ async function updateUserDetails(details) {
         await updateProfile(auth.currentUser, {
             displayName: details.name, photoURL: details.image
         })
+        // console.log("updating");
         return { data: { status: true } }
     } catch (error) {
         console.log(error);

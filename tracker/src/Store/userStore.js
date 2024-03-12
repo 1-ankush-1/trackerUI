@@ -17,6 +17,7 @@ const UserContextProvider = (props) => {
 
     async function getIntialUserDetails() {
         const response = await userServices.get();
+        // console.log(response);
         setUserProfile(prev => {
             return { ...prev, ...response.data.user };
         });
@@ -24,12 +25,13 @@ const UserContextProvider = (props) => {
 
     useEffect(() => {
         getIntialUserDetails();
-        console.log("called");
+        // console.log("called");
     }, []);
 
     const handleProfileUpdate = async (user) => {
         const response = await userServices.put(user);
-        if (response.status) {
+        // console.log(response);
+        if (response.data.status) {
             alert("updated successfully");
             setUserProfile(prev => {
                 return { ...prev, ...user };

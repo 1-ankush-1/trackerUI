@@ -3,6 +3,7 @@ import Form from "../../UI/Form";
 import Input from "../../UI/Input";
 import Button from "../../UI/Button";
 import { AuthContext } from "../../Store/authStore";
+import { Link } from "react-router-dom";
 
 const Login = () => {
     const authCtx = useContext(AuthContext);
@@ -50,9 +51,9 @@ const Login = () => {
                     onChange={handleLoginUserInput}
                     required={true}
                 />
-                <p>forget password?<a href="forget" className="text-blue-700"> forget</a></p>
+                <p>forget password?<Link to="../forget" className="text-blue-700"> forget</Link></p>
                 <Button type={"submit"} className="cursor-pointer text-center">Submit</Button>
-                <p>doesn't have an account? <a href="login" className="text-blue-700">SignUp</a></p>
+                <p>doesn't have an account? <Link to="../signup" className="text-blue-700"> SignUp</Link></p>
             </Form>
         </div>
     )

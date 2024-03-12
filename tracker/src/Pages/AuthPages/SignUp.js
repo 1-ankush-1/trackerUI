@@ -3,8 +3,10 @@ import Form from "../../UI/Form";
 import Input from "../../UI/Input";
 import Button from "../../UI/Button";
 import authService from "../../Services/authServices";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+    const navigate = useNavigate();
     const [userInputState, setUserInputState] = useState({
         email: "",
         password: "",
@@ -33,6 +35,7 @@ const SignUp = () => {
         if (response.data) {
             console.log(response.data)
             alert("signup successfull");
+            navigate("/auth/login");
         }
     }
 
@@ -71,7 +74,7 @@ const SignUp = () => {
                 />
                 {error && <p className="text-red-700">confirm password is not same</p>}
                 <Button type={"submit"} className="cursor-pointer text-center">Submit</Button>
-                <p>have an account <a href="login" className="text-blue-700"> Login</a></p>
+                <p>have an account <Link to="/login" className="text-blue-700"> Login</Link></p>
             </Form>
         </div>
     )

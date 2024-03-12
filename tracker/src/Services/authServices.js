@@ -1,9 +1,10 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
+import { createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from "../firebase.setup";
 
 async function signUpUser(user) {
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, user.email, user.password);
+        await sendEmailVerification(auth.currentUser);
         const userData = userCredential.user;
         const token = await userData.getIdToken();
         return { data: { email: userData.email, token } };
@@ -17,6 +18,9 @@ async function signUpUser(user) {
 async function loginUser(user) {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, user.email, user.password);
+        if (!userCredential.user.emailVerified) {
+            throw new Error("email is not verified yet");
+        }
         const userData = userCredential.user;
         const token = await userData.getIdToken();
         return { data: { email: userData.email, token } };

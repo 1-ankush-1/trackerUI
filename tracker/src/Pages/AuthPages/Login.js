@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Form from "../../UI/Form";
 import Input from "../../UI/Input";
 import Button from "../../UI/Button";
-import authService from "../../Services/authServices";
+import { AuthContext } from "../../Store/authStore";
 
 const Login = () => {
+    const authCtx = useContext(AuthContext);
     const [userInputState, setUserInputState] = useState({
         email: "",
         password: "",
@@ -22,11 +23,7 @@ const Login = () => {
             alert("missing email or password")
             return
         }
-        const response = await authService.login({ email: userInputState.email, password: userInputState.password });
-        if (response.data) {
-            console.log(response.data)
-            alert("Login successfull");
-        }
+        authCtx.onLogin({ email: userInputState.email, password: userInputState.password });
     }
 
     return (

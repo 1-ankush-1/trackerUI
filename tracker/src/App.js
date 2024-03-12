@@ -1,22 +1,15 @@
 import './App.css';
-import Footer from './Layout/Footer/Footer';
-import Header from './Layout/Header/Header';
-import Login from './Pages/AuthPages/Login';
-import Profile from './Pages/Profile/Profile';
-import UserContextProvider from './Store/userStore';
-
+import Router from './Routes/Router';
+import { BrowserRouter } from "react-router-dom";
+import AuthContextProvider from './Store/authStore';
 
 function App() {
   return (
-    <>
-      <Header />
-      <UserContextProvider>
-        <main>
-          < Profile />
-        </main>
-      </UserContextProvider>
-      <Footer />
-    </>
+    <BrowserRouter>
+      <AuthContextProvider>
+        <Router />
+      </AuthContextProvider>
+    </BrowserRouter>
   );
 }
 

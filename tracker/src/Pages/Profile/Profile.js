@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Input from "../../UI/Input";
 import Form from "../../UI/Form";
 import Button from "../../UI/Button";
@@ -6,13 +6,28 @@ import { UserContext } from "../../Store/userStore";
 
 const Profile = () => {
     const userCtx = useContext(UserContext);
-
+    const isLoading = useRef(false);
     const [userProfileInput, setUserProfileInput] = useState({
-        name: userCtx.user.name,
-        image: userCtx.user.image,
-    })
+        name: "",
+        image: "",
+    });
 
-    console.log(userCtx);
+    useEffect(() => {
+        console.log("called");
+        if (userCtx.user.id === "") {
+            isLoading.current = true;
+        } else {
+            isLoading.current = false;
+            setUserProfileInput({
+                name: userCtx.user.name || "",
+                image: userCtx.user.image || "",
+            });
+        }
+    }, [userCtx.user]);
+
+    if (isLoading.current) {
+        return <h1>Loading...</h1>;
+    }
 
     const handleProfileInputChange = (event) => {
         setUserProfileInput(prev => {

@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword } from "firebase/auth"
+import { createUserWithEmailAndPassword, fetchSignInMethodsForEmail, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from "../firebase.setup";
 
 async function signUpUser(user) {
@@ -31,10 +31,25 @@ async function loginUser(user) {
     }
 }
 
+async function resetUser(email) {
+    try {
+        await sendPasswordResetEmail(auth, email);
+
+        return { data: { message: "Successfully sent reset password mail" } };
+    } catch (error) {
+        if (error.code === "auth/user-not-found") {
+            return { data: { message: "Email does not exist" } };
+        }
+        console.error(error);
+        return { error: { message: "Failed to send reset password mail" } };
+    }
+}
+
 
 const authService = {
     signUp: signUpUser,
-    login: loginUser
+    login: loginUser,
+    reset: resetUser
 }
 
 export default authService;

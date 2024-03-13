@@ -5,7 +5,8 @@ export const AuthContext = React.createContext({
     token: "",
     isLoggedIn: "",
     onLogin: () => { },
-    onLogout: () => { }
+    onLogout: () => { },
+    onReset: () => { }
 })
 
 const AuthContextProvider = (props) => {
@@ -22,9 +23,9 @@ const AuthContextProvider = (props) => {
         }
     }
 
-    const handleResetToken = (token) => {
-        localStorage.setItem("token", token)
-        setToken(token);
+    const handleResetToken = async (email) => {
+        const response = await authService.reset(email);
+        alert(response.data.message);
     }
 
     const handleRemoveToken = () => {

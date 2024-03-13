@@ -2,8 +2,8 @@ import ExpenseItem from "./ExpenseItem";
 
 const Expenses = (props) => {
     return (
-        <table className="table-auto">
-            <thead className="table-header-group">
+        <table className="table-auto overflow-x-scroll shadow-lg w-screen">
+            <thead className="table-header-group bg-gray-800 text-white">
                 <tr className="table-row">
                     <th className="px-4 py-2">Title</th>
                     <th className="px-4 py-2">Description</th>

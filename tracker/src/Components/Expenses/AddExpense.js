@@ -30,7 +30,7 @@ const AddExpense = (props) => {
     }
 
     return (
-        <Form onSubmit={handleExpenseSubmitForm}>
+        <Form onSubmit={handleExpenseSubmitForm} className="sm:flex justify-center items-center gap-4">
             <Input
                 type="number"
                 label="Amount"
@@ -49,7 +49,7 @@ const AddExpense = (props) => {
                 value={expense.description}
                 onChange={handleExpenseChange}
             />
-            <div className="py-2">
+            <div className="py-2 mb-4">
                 <label htmlFor="catogray" className="block text-gray-700 text-sm font-bold mb-2">Catograry</label>
                 <select
                     type="text"

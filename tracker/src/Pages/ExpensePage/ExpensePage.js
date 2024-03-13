@@ -21,7 +21,7 @@ const ExpensePage = () => {
                     console.log("updating item", { id: change.doc.id, ...expenseData });
                     setExpenses((prev) => {
                         return prev.filter((expense) => {
-                            if (Number(expense.id) !== Number(change.doc.id)) {
+                            if (expense.id === change.doc.id) {
                                 expense.amount = expenseData.amount;
                                 expense.description = expenseData.description;
                                 expense.catogary = expenseData.catogary;
@@ -30,11 +30,11 @@ const ExpensePage = () => {
                         })
                     })
                 } else if (change.type === "removed") {
-                    console.log("called", expenseData);
+                    // console.log("called", expenseData);
                     const deletedExpenseId = change.doc.id;
                     setExpenses((prev) => {
                         return prev.filter((expense) => {
-                            return Number(expense.id) !== Number(deletedExpenseId);
+                            return expense.id !== deletedExpenseId;
                         })
                     })
                 }
@@ -62,7 +62,7 @@ const ExpensePage = () => {
     return (
         <>
             <AddExpense onAddExpense={addExpense} />
-            <Expenses expenses={expenses} />
+            <Expenses expenses={expenses} onRemoveExpense={removeExpense} onUpdateExpense={updateExpense} />
         </>
     )
 }

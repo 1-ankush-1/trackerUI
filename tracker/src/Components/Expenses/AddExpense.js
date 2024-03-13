@@ -18,6 +18,7 @@ const AddExpense = (props) => {
 
     const handleExpenseSubmitForm = (e) => {
         e.preventDefault();
+        console.log(expense);
         if (expense.amount === "" ||
             expense.description === "" ||
             expense.catogary === "") {
@@ -57,6 +58,7 @@ const AddExpense = (props) => {
                     name="catogary"
                     id="catogary"
                     className="shadow border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    defaultValue="petrol"
                 >
                     <option value="petrol">Petrol</option>
                     <option value="movie">Movie</option>

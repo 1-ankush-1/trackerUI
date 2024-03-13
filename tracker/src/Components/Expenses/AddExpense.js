@@ -3,9 +3,9 @@ import Input from "../../UI/Input";
 import Button from "../../UI/Button";
 import Form from "../../UI/Form";
 
-const AddExpense = () => {
+const AddExpense = (props) => {
     const [expense, setExpense] = useState({
-        money: "",
+        amount: "",
         description: "",
         catogary: ""
     })
@@ -18,15 +18,14 @@ const AddExpense = () => {
 
     const handleExpenseSubmitForm = (e) => {
         e.preventDefault();
-        if (expense.money === "" ||
+        if (expense.amount === "" ||
             expense.description === "" ||
             expense.catogary === "") {
-            alert("missing value money ,desc or catograry");
+            alert("missing value amount ,desc or catograry");
             return;
         }
-        console.log(expense);
-
-
+        // console.log(expense);
+        props.onAddExpense(expense);
     }
 
     return (
@@ -35,9 +34,9 @@ const AddExpense = () => {
                 type="number"
                 label="Amount"
                 id="amount"
-                name="money"
+                name="amount"
                 placeholder="enter amount"
-                value={expense.money}
+                value={expense.amount}
                 onChange={handleExpenseChange}
             />
             <Input

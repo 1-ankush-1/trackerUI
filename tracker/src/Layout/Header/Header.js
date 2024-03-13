@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../Store/authStore";
 
 const Header = () => {
@@ -10,7 +10,10 @@ const Header = () => {
                 Header
             </div>
             <div>
-                <Link to="/profile">profile</Link>
+                <NavLink to="/expense">Expense</NavLink>
+            </div>
+            <div>
+                <NavLink to="/profile">profile</NavLink>
             </div>
             <div>
                 <div onClick={authCtx.onLogout}>Logout</div>

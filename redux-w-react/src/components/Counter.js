@@ -1,6 +1,7 @@
+import { counterAction } from '../store/counter';
 import classes from './Counter.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { counterAction } from '../store';
+
 
 const Counter = () => {
   //to get particular store slice state data

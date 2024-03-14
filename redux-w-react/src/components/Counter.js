@@ -4,7 +4,7 @@ import { counterAction } from '../store';
 
 const Counter = () => {
   //to get particular store slice state data
-  const counter = useSelector((state) => state.counter);
+  const counter = useSelector((state) => state.counter.counter);
   const dispatch = useDispatch();
 
   const toggleCounterHandler = () => {

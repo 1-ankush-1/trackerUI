@@ -2,10 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const cartUISLice = createSlice({
     name: "cartUI",
-    initialState: { isHidden: false },
+    initialState: { isHidden: false, notification: null },
     reducers: {
         toggle: (state) => {
             state.isHidden = !state.isHidden;
+        },
+        showNotification(state, action) {
+            state.notification = { status: action.payload.status, title: action.payload.title, message: action.payload.message }
         }
     }
 })

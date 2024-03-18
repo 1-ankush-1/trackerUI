@@ -3,9 +3,8 @@ import Cart from './components/Cart/Cart';
 import Layout from './components/Layout/Layout';
 import Products from './components/Shop/Products';
 import { useEffect } from 'react';
-import { cartUIAction } from './redux/slices/cartUI';
 import Notification from "./components/UI/Notification"
-import { sendCartData } from './redux/slices/cart';
+import { sendCartData } from './redux/actions/cart';
 
 let initialRun = true;
 

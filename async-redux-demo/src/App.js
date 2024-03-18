@@ -24,8 +24,11 @@ function App() {
       return;
     }
 
-    //setting data on every cart changes
-    dispatch(sendCartData(cart));
+    //not call on inital fetch
+    if (cart.changed) {
+      //setting data on every cart changes
+      dispatch(sendCartData(cart));
+    }
   }, [cart, dispatch])
 
   return (

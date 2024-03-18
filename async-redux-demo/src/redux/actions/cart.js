@@ -16,7 +16,11 @@ export function sendCartData(cartData) {
         const sendRequest = async () => {
             const response = await fetch("https://async-react-add96-default-rtdb.asia-southeast1.firebasedatabase.app/cart.json", {
                 method: "PUT",
-                body: JSON.stringify(cartData),
+                body: JSON.stringify({
+                    items: cartData.items,
+                    totalQuantity: cartData.totalQuantity,
+                    totalPrice: cartData.totalPrice
+                }),
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -59,7 +63,11 @@ export function fetchCartData() {
             //fetch data
             const cartData = await fetchData();
             //set data in reducer
-            dispatch(cartAction.add(cartData));
+            dispatch(cartAction.replaceCart({
+                items: cartData.items || [],
+                totalQuantity: cartData.totalQuantity,
+                totalPrice: cartData.totalPrice
+            }));
         } catch (error) {
             dispatch(cartUIAction.showNotification({
                 status: "error",

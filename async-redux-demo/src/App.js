@@ -5,6 +5,7 @@ import Products from './components/Shop/Products';
 import { useEffect } from 'react';
 import { cartUIAction } from './redux/slices/cartUI';
 import Notification from "./components/UI/Notification"
+import { sendCartData } from './redux/slices/cart';
 
 let initialRun = true;
 
@@ -15,40 +16,6 @@ function App() {
   const notification = useSelector(state => state.cartUI.notification);
 
   useEffect(() => {
-    const setDataInCart = async () => {
-      try {
-        //setting notification
-        dispatch(cartUIAction.showNotification({
-          status: "pending",
-          title: "sending..",
-          message: "Sending cart data"
-        }))
-        
-        const response = await fetch("https://async-react-add96-default-rtdb.asia-southeast1.firebasedatabase.app/cart.json", {
-          method: "PUT",
-          body: JSON.stringify(cart),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-
-        if (!response.ok) {
-          throw new Error("setting cart data failed ")
-        }
-
-        dispatch(cartUIAction.showNotification({
-          status: "success",
-          title: "Success",
-          message: "Set cart data successfully "
-        }))
-      } catch (error) {
-        dispatch(cartUIAction.showNotification({
-          status: "error",
-          title: "Error",
-          message: "setting cart data failed "
-        }))
-      }
-    }
 
     //do not call on initial call
     if (initialRun) {
@@ -57,7 +24,7 @@ function App() {
     }
 
     //setting data on every cart changes
-    setDataInCart();
+    dispatch(sendCartData(cart));
   }, [cart])
 
   return (

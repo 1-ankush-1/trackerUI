@@ -4,7 +4,7 @@ import Layout from './components/Layout/Layout';
 import Products from './components/Shop/Products';
 import { useEffect } from 'react';
 import Notification from "./components/UI/Notification"
-import { sendCartData } from './redux/actions/cart';
+import { fetchCartData, sendCartData } from './redux/actions/cart';
 
 let initialRun = true;
 
@@ -13,6 +13,8 @@ function App() {
   const cart = useSelector(state => state.cart);
   const dispatch = useDispatch();
   const notification = useSelector(state => state.cartUI.notification);
+
+  useEffect(() => { dispatch(fetchCartData()) }, [dispatch]);
 
   useEffect(() => {
 
@@ -24,7 +26,7 @@ function App() {
 
     //setting data on every cart changes
     dispatch(sendCartData(cart));
-  }, [cart])
+  }, [cart, dispatch])
 
   return (
     <>

@@ -3,7 +3,7 @@ import authService from "../Services/authServices";
 
 export const AuthContext = React.createContext({
     token: "",
-    isLoggedIn: "",
+    isLoggedIn: false,
     onLogin: () => { },
     onLogout: () => { },
     onReset: () => { }

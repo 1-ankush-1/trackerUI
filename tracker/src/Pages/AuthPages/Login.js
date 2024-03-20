@@ -4,9 +4,12 @@ import Input from "../../UI/Input";
 import Button from "../../UI/Button";
 import { AuthContext } from "../../Store/authStore";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../redux/actions/auth";
 
 const Login = () => {
-    const authCtx = useContext(AuthContext);
+    // const authCtx = useContext(AuthContext);
+    const dispatch = useDispatch();
     const [userInputState, setUserInputState] = useState({
         email: "",
         password: "",
@@ -24,7 +27,8 @@ const Login = () => {
             alert("missing email or password")
             return
         }
-        authCtx.onLogin({ email: userInputState.email, password: userInputState.password });
+        dispatch(loginUser({ email: userInputState.email, password: userInputState.password }))
+        // authCtx.onLogin({ email: userInputState.email, password: userInputState.password });
     }
 
     return (

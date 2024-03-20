@@ -5,6 +5,7 @@ import SunIcon from "../../icon/sun";
 import MoonIcon from "../../icon/night";
 import { useDispatch, useSelector } from "react-redux";
 import { themeAction } from "../../redux/slices/theme";
+import { authAction } from "../../redux/slices/auth";
 
 const Header = () => {
     const authCtx = useContext(AuthContext);
@@ -14,6 +15,10 @@ const Header = () => {
 
     const handleChangeTheme = () => {
         dispatch(themeAction.changeMode());
+    }
+
+    const logoutUser = ()=>{
+        dispatch(authAction.logout());
     }
 
     return (
@@ -56,7 +61,7 @@ const Header = () => {
                     </NavLink>
                 </div>
                 <div>
-                    <div onClick={authCtx.onLogout} className="text-blue-300 hover:text-blue-500 cursor-pointer">Logout</div>
+                    <div onClick={logoutUser} className="text-blue-300 hover:text-blue-500 cursor-pointer">Logout</div>
                 </div>
             </div>
         </header>

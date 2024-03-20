@@ -1,6 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import App from './App';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 //mocking firebase function
 jest.mock("firebase/auth", () => ({
@@ -13,6 +15,8 @@ jest.mock("firebase/firestore", () => ({
 
 test('render App Component', () => {
     render(
-        <App />
+        <Provider store={store}>
+            <App />
+        </Provider>
     );
 });

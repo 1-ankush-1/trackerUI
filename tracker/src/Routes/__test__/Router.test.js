@@ -4,6 +4,7 @@ import { MemoryRouter, Navigate, Route, Routes } from "react-router-dom";
 import UserRoutes from "../UserRoutes";
 import { Provider } from "react-redux";
 import store from "../../redux/store";
+import React from "react";
 
 
 //mocking firebase function
@@ -21,25 +22,17 @@ jest.mock("../../firebase.setup", () => ({
 describe("Route Components", () => {
 
     test("renders UserRoutes when user is logged in", () => {
-        const authCtx = {
-            token: "sometoken",
-            isLoggedIn: true,
-            onLogin: jest.fn(),
-            onLogout: jest.fn(),
-            onReset: jest.fn()
-        };
+        const isAuthenticated = true;
 
         render(
             <Provider store={store}>
                 <MemoryRouter initialEntries={['/']}>
-                    <AuthContext.Provider value={authCtx}>
-                            <Routes>
-                                <Route
-                                    path="/*"
-                                    element={authCtx.isLoggedIn ? <UserRoutes /> : <Navigate to="/auth/login" replace />}
-                                />
-                            </Routes>
-                    </AuthContext.Provider>
+                    <Routes>
+                        <Route
+                            path="/*"
+                            element={isAuthenticated ? <UserRoutes /> : <Navigate to="/auth/login" replace />}
+                        />
+                    </Routes>
                 </MemoryRouter>
             </Provider>
         )
@@ -48,25 +41,17 @@ describe("Route Components", () => {
     })
 
     test("renders login page when user is not logged in", () => {
-        const authCtx = {
-            token: "",
-            isLoggedIn: false,
-            onLogin: jest.fn(),
-            onLogout: jest.fn(),
-            onReset: jest.fn()
-        };
+        const isAuthenticated = false;
 
         render(
             <Provider store={store}>
                 <MemoryRouter initialEntries={['/']}>
-                    <AuthContext.Provider value={authCtx}>
-                        <Routes>
-                            <Route
-                                path="/*"
-                                element={authCtx.isLoggedIn ? <UserRoutes /> : <Navigate to="/auth/login" replace />}
-                            />
-                        </Routes>
-                    </AuthContext.Provider>
+                    <Routes>
+                        <Route
+                            path="/*"
+                            element={isAuthenticated ? <UserRoutes /> : <Navigate to="/auth/login" replace />}
+                        />
+                    </Routes>
                 </MemoryRouter>
             </Provider>
         )

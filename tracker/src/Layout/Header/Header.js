@@ -1,6 +1,4 @@
-import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { AuthContext } from "../../Store/authStore";
 import SunIcon from "../../icon/sun";
 import MoonIcon from "../../icon/night";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,7 +6,6 @@ import { themeAction } from "../../redux/slices/theme";
 import { authAction } from "../../redux/slices/auth";
 
 const Header = () => {
-    const authCtx = useContext(AuthContext);
     const dispatch = useDispatch();
     const isPremiumUser = useSelector(state => state.expense.isPremiumUser);
     const isDarkMode = useSelector(state => state.theme.isDark);
